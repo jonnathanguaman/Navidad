@@ -1,0 +1,114 @@
+body {
+    margin: 0;
+    background: linear-gradient(to bottom, #00111a, #004d66);
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
+    color: white;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    position: relative;
+  }
+  
+  .tree {
+    width: 0;
+    height: 0;
+    border-left: 170px solid transparent;
+    border-right: 170px solid transparent;
+    border-bottom: 300px solid green;
+    position: relative; /* Asegura que los elementos dentro de .tree se posicionen respecto a él */
+  }
+  
+  .trunk {
+    width: 50px; /* Ancho del tronco */
+    height: 50px; /* Altura del tronco */
+    background-color: #8B4513; /* Color marrón */
+    position: absolute;
+    bottom: -350px; /* Coloca el tronco justo debajo del árbol */
+    left: 50%; /* Centrado */
+    transform: translateX(-50%); /* Ajusta para que esté centrado */
+    border-radius: 5px; /* Bordes ligeramente redondeados */
+  }
+  
+  
+  .star {
+    width: 30px;
+    height: 30px;
+    background: yellow;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .light {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    animation: glow 1.5s infinite alternate;
+  }
+
+  @keyframes glow {
+    0% { opacity: 0.5; transform: scale(1); }
+    100% { opacity: 1; transform: scale(1.3); }
+  }
+  
+  .snow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  
+  .snowflake {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: fall linear infinite;
+  }
+  
+  @keyframes fall {
+    from {
+      transform: translateY(-10vh) translateX(0);
+    }
+    to {
+      transform: translateY(100vh) translateX(30px);
+    }
+  }
+  
+  .countdown {
+    margin-top: 10px;
+    font-size: 1.5em;
+    text-shadow: 2px 2px 4px #000;
+    text-align: center;
+  }
+
+  .footer p{
+    text-align: center;
+   }
+
+.toggle-lights-btn {
+    margin-top: 80px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.toggle-lights-btn:hover {
+    background-color: #45a049;
+}
