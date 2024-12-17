@@ -24,9 +24,8 @@ function startCountdown() {
         const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
         const hours = Math.floor((timeLeft / (1000 * 60 * 60)) % 24);
         const minutes = Math.floor((timeLeft / (1000 * 60)) % 60);
-        const seconds = Math.floor((timeLeft / 1000) % 60);
 
-        countdownElement.textContent = `Faltan ${days} días, ${hours} horas, ${minutes} minutos, y ${seconds} segundos para Navidad 🎄`;
+        countdownElement.textContent = `Faltan ${days} días, ${hours} horas, ${minutes} minutos 🎄`;
     }
 
     setInterval(updateCountdown, 1000);
@@ -105,6 +104,47 @@ toggleButton.addEventListener('click', () => {
         toggleButton.textContent = 'Apagar Luces'; 
     }
     lightsOn = !lightsOn;
+});
+
+
+function createFirework(x, y) {
+    const container = document.querySelector('.container');
+    const numParticles = 30; // Cantidad de partículas por fuego artificial
+
+    for (let i = 0; i < numParticles; i++) {
+        const firework = document.createElement('div');
+        firework.classList.add('firework');
+
+        // Generar una dirección aleatoria para la partícula
+        const angle = (Math.PI * 2 * i) / numParticles;
+        const distance = Math.random() * 100 + 50; // Distancia de las partículas
+        const dx = Math.cos(angle) * distance;
+        const dy = Math.sin(angle) * distance;
+
+        // Configurar la posición inicial y las variables de dirección
+        firework.style.left = `${x}px`;
+        firework.style.top = `${y}px`;
+        firework.style.setProperty('--dx', `${dx}px`);
+        firework.style.setProperty('--dy', `${dy}px`);
+        firework.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+
+        // Añadir la partícula al contenedor
+        container.appendChild(firework);
+
+        // Eliminar la partícula después de la animación
+        firework.addEventListener('animationend', () => {
+            firework.remove();
+        });
+    }
+}
+
+// Escuchar el botón para generar fuegos artificiales
+document.getElementById('fireworksButton').addEventListener('click', () => {
+    // Obtener una posición aleatoria dentro de la ventana
+    const x = Math.random() * window.innerWidth;
+    const y = Math.random() * (window.innerHeight / 2); // Limitado a la parte superior
+
+    createFirework(x, y);
 });
 
 generateSnowflakes();
