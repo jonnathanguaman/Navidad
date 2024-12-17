@@ -156,3 +156,11 @@ body {
       opacity: 0;
   }
 }
+.layer {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 100px solid transparent;
+  border-right: 100px solid transparent;
+  border-bottom: 150px solid green;
+}
